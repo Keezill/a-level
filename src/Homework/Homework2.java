@@ -29,8 +29,8 @@ public class Homework2 {
 
     private static void getSmallestModulusOfNumber(double a, double b, double c) {
         System.out.println(a < 0 ? "Modulus of first number = " + Math.abs(a) : "Modulus of first number = " + a);
-        System.out.println(b < 0 ? "Modulus of second number = " + Math.abs(b) : "Modulus of first number = " + b);
-        System.out.println(c < 0 ? "Modulus of third number = " + Math.abs(c) : "Modulus of first number = " + c);
+        System.out.println(b < 0 ? "Modulus of second number = " + Math.abs(b) : "Modulus of second number = " + b);
+        System.out.println(c < 0 ? "Modulus of third number = " + Math.abs(c) : "Modulus of third number = " + c);
         if (Math.abs(a) < Math.abs(b) && Math.abs(a) < Math.abs(c)) {
             System.out.println("The smallest modulus: " + Math.abs(a));
         } else if (Math.abs(b) < Math.abs(a) && Math.abs(b) < Math.abs(c)) {
