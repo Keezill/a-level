@@ -31,11 +31,11 @@ public class Homework2 {
         var num1 = a < 0 ? -a : a;
         var num2 = b < 0 ? -b : b;
         var num3 = c < 0 ? -c : c;
-        if(num1 < num2 && num1 < num3){
+        if (num1 < num2 && num1 < num3) {
             System.out.println("The smallest modulus is " + num1);
-        } else if(num2 < num1 && num2 < num3) {
+        } else if (num2 < num1 && num2 < num3) {
             System.out.println("The smallest modulus is " + num2);
-        }else if(num3 < num2 && num3 < num2) {
+        } else if (num3 < num2 && num3 < num2) {
             System.out.println("The smallest modulus is " + num3);
         }
     }
