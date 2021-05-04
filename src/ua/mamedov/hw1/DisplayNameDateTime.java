@@ -1,4 +1,4 @@
-package Homework;
+package ua.mamedov.hw1;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

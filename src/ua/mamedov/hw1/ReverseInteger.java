@@ -1,4 +1,4 @@
-package Homework;
+package ua.mamedov.hw1;
 
 public class ReverseInteger {
     public static void main(String[] args) {
