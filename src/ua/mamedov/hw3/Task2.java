@@ -5,13 +5,12 @@ import java.util.Scanner;
 public class Task2 {
     public static void main(String[] args) {
         String text = new Scanner(System.in).nextLine();
-        deleteSpace(text);
-        System.out.println(isPalindrome(text) ? text + " is palindrome" : text + " is not palindrome");
+        String text2 = deleteSpace(text);
+        System.out.println(isPalindrome(text2) ? text2 + " is palindrome" : text2 + " is not palindrome");
     }
 
-    private static void deleteSpace(String text) {
-        String newText = text.replaceAll("\\s", "");
-        isPalindrome(newText);
+    private static String deleteSpace(String text) {
+        return text.replaceAll("\\s", "");
     }
 
     private static boolean isPalindrome(String text) {
