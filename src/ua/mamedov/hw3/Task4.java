@@ -7,9 +7,12 @@ public class Task4 {
     public static void main(String[] args) {
         System.out.println("Guess the number from 0 to 9:");
         var number = new Random().nextInt(10);
+        guessNumber(number);
+    }
+
+    private static void guessNumber(int number) {
         while (true) {
             var num = new Scanner(System.in).nextInt();
-
             if (num >= 10) {
                 System.out.println("Number is too high");
             } else if (num == number) {
