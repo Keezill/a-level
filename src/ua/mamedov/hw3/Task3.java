@@ -1,5 +1,6 @@
 package ua.mamedov.hw3;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Task3 {
@@ -10,13 +11,9 @@ public class Task3 {
 
     private static int countWords(String text) {
         int count = 1;
-        if (text.length() != 0) {
-            for (int i = 0; i < text.length(); i++) {
-                if (text.charAt(i) == ' ' && text.charAt(i - 1) != ' ') {
-                    count++;
-                }
-            }
-        }
-        return count;
+        String[] array = text.split("[-#$%^&!?,.0-9\\s]+");
+        System.out.println(Arrays.toString(array));
+
+        return array.length;
     }
 }
