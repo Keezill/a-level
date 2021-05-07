@@ -23,7 +23,6 @@ public class Task4 {
             } else if (num > number) {
                 System.out.println("number > " + num + ". Try again");
             }
-            //System.out.println(num == number ? "Congratulations, you guessed the number" : "Sorry, but your number is invalid!");
         }
     }
 }
