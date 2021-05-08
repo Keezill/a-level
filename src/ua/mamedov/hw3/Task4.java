@@ -14,7 +14,6 @@ public class Task4 {
         var scanner = new Scanner(System.in);
         boolean win = isWinner(number, scanner);
         while (!win) {
-            isWinner(number, scanner);
             win = isWinner(number, scanner);
         }
     }
