@@ -1,6 +1,6 @@
 package ua.mamedov.hw2;
 
-public class Homework2 {
+public class Task123 {
     public static void main(String[] args) {
         getSquareOfTriangle(1,1,2,5,5,3);
         checkIfNumberEven(51);
