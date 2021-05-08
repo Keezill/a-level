@@ -1,6 +1,6 @@
 package ua.mamedov.hw1;
 
-public class ReverseInteger {
+public class Task2 {
     public static void main(String[] args) {
         var number = 123456;
 
