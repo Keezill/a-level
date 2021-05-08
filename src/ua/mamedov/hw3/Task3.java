@@ -11,7 +11,7 @@ public class Task3 {
 
     private static int countWords(String text) {
         int count = 1;
-        String[] array = text.split("[-#$%^&!?,.0-9\\s]+");
+        String[] array = text.split("[#$%^&!?,.0-9\\s]+");
         System.out.println(Arrays.toString(array));
 
         return array.length;
