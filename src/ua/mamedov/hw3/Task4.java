@@ -5,24 +5,35 @@ import java.util.Scanner;
 
 public class Task4 {
     public static void main(String[] args) {
-        System.out.println("Guess the number from 0 to 9:");
         var number = new Random().nextInt(10);
+        System.out.println("Guess the number from 0 to 9:");
         guessNumber(number);
     }
 
     private static void guessNumber(int number) {
-        while (true) {
-            var num = new Scanner(System.in).nextInt();
-            if (num >= 10) {
-                System.out.println("Number is too high");
-            } else if (num == number) {
-                System.out.println("Congratulations, you guessed the number");
-                break;
-            } else if (num < number) {
-                System.out.println("number < " + num + ". Try again");
-            } else if (num > number) {
-                System.out.println("number > " + num + ". Try again");
-            }
+        var scanner = new Scanner(System.in);
+        boolean win = isWinner(number, scanner);
+        while (!win) {
+            isWinner(number, scanner);
+            win = isWinner(number, scanner);
         }
+    }
+
+    public static boolean isWinner(int number, Scanner scanner){
+        var expectedNum = scanner.nextInt();
+        if (expectedNum >= 10) {
+            System.out.println("Number is too high");
+            return false;
+        } else if (expectedNum == number) {
+            System.out.println("Congratulations, you guessed the number");
+            return true;
+        } else if (expectedNum < number) {
+            System.out.println("number > " + expectedNum + ". Try again");
+            return false;
+        } else if (expectedNum > number) {
+            System.out.println("number < " + expectedNum + ". Try again");
+            return false;
+        }
+        return false;
     }
 }
