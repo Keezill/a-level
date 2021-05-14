@@ -18,12 +18,11 @@ public class Task2 {
     }
 
     private static boolean isDescending(int[] numbers) {
-        boolean descending = true;
-        for (int i = 0; i < numbers.length - 1; i++) {
-           if(numbers[i] < numbers[i + 1]  && descending){
-               descending = false;
-           }
+        for (int i = 1; i < numbers.length - 1; i++) {
+            if (numbers[i] > numbers[i - 1]) {
+                return false;
+            }
         }
-        return descending;
+        return true;
     }
 }
