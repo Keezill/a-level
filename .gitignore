@@ -2,8 +2,10 @@
 /shelf/
 /workspace.xml
 .idea/
+out/
 *.iml
 *.iws
+
 *.class
 .mtj.tmp/
 *.jar
