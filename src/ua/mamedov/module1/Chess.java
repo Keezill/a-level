@@ -100,6 +100,8 @@ public class Chess {
         System.out.println("'X' is your knight");
     }
 
+    //Этот метод добавил потому что не все доступные ходы оказыввались поблизости
+    //если выбрать крайнюю ячейку(условно 10 и попробовать походить в ячейку 20, ход происходил но он был неправильный
     static boolean checkForRowsAndCols(int knightCell, int knightMove) {
         for (int rows = 0; rows < NUMBERS.length; rows++) {
             for (int cols = 0; cols < NUMBERS.length; cols++) {
@@ -107,7 +109,7 @@ public class Chess {
                     for (int rows2 = 0; rows2 < NUMBERS.length; rows2++) {
                         for (int cols2 = 0; cols2 < NUMBERS.length; cols2++) {
                             if (knightMove == NUMBERS[rows2][cols2] && rows != rows2
-                                    && Math.abs(cols - cols2) < 4) {
+                                    && Math.abs(cols - cols2) < 3) {
                                 return true;
                             }
                         }
