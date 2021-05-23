@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Chess {
     public static final String EMPTY = " ";
 
-    public static final String USER = "X";
+    public static final String[] USER = {"X"};
 
     public static final String[][] BOARD = {
             {EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY},
@@ -19,7 +19,7 @@ public class Chess {
             {EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY},
 
     };
-    public static final int[][] board = {
+    public static final int[][] NUMBERS = {
             {57, 58, 59, 60, 61, 62, 63, 64},
             {49, 50, 51, 52, 53, 54, 55, 56},
             {41, 42, 43, 44, 45, 46, 47, 48},
@@ -33,7 +33,7 @@ public class Chess {
     static void printGameRules() {
         System.out.println("You can enter the current position of the knight");
         System.out.println("Then you can enter the cell to which you want to try to move the knight");
-        for (int[] innerArray : Chess.board) {
+        for (int[] innerArray : Chess.NUMBERS) {
             System.out.println(Arrays.toString(innerArray));
         }
     }
@@ -43,9 +43,9 @@ public class Chess {
             System.out.println("Please enter coordinates of the cell where you want to place knight");
             var userInputKnight = new Scanner(System.in).nextInt();
             if (userInputKnight >= 1 && userInputKnight <= 64) {
-                for (int rows = 0; rows < Chess.board.length; rows++) {
-                    for (int cols = 0; cols < Chess.board.length; cols++) {
-                        if (userInputKnight == Chess.board[rows][cols]) {
+                for (int rows = 0; rows < NUMBERS.length; rows++) {
+                    for (int cols = 0; cols < NUMBERS.length; cols++) {
+                        if (userInputKnight == NUMBERS[rows][cols]) {
                             return userInputKnight;
                         }
                     }
@@ -64,14 +64,8 @@ public class Chess {
                         userInputMove == knightCell + 15 || userInputMove == knightCell + 17 ||
                         userInputMove == knightCell - 6 || userInputMove == knightCell - 10 ||
                         userInputMove == knightCell - 15 || userInputMove == knightCell - 17) {
-                    for (int rows = 0; rows < Chess.board.length; rows++) {
-                        for (int cols = 0; cols < Chess.board.length; cols++) {
-                            if(userInputMove == Chess.board[rows][cols] && Chess.board[rows][cols] != Chess.board[rows][cols]) {
-                                System.out.println("Move is possible");
-                                return userInputMove;
-                            }
-                        }
-                    }
+                    System.out.println("Move is possible");
+                    return userInputMove;
                 } else {
                     System.out.println("Knight can't be placed at this cell: " + userInputMove + " Try again");
                 }
@@ -79,28 +73,29 @@ public class Chess {
         }
     }
 
-    static void makeUserProgress(int number) {
-        for (int rows = 0; rows < Chess.board.length; rows++) {
-            for (int cols = 0; cols < Chess.board.length; cols++) {
-                if (number == Chess.board[rows][cols]) {
-                    Chess.BOARD[rows][cols] = Chess.USER;
+
+        static void makeUserProgress ( int number){
+            for (int rows = 0; rows < NUMBERS.length; rows++) {
+                for (int cols = 0; cols < NUMBERS.length; cols++) {
+                    if (number == NUMBERS[rows][cols]) {
+                        BOARD[rows][cols] = USER[0];
+                    }
                 }
             }
+            buildGameBoard(Chess.BOARD);
         }
-        buildGameBoard(Chess.BOARD);
-    }
 
 
-    static void buildGameBoard(String[][] data) {
-        System.out.println("---------------------------------");
-        for (int i = 0; i < 8; i++) {
-            System.out.print("| ");
-            for (int j = 0; j < 8; j++) {
-                System.out.print(data[i][j] + " | ");
-            }
-            System.out.println();
+        static void buildGameBoard (String[][]data){
             System.out.println("---------------------------------");
+            for (int i = 0; i < 8; i++) {
+                System.out.print("| ");
+                for (int j = 0; j < 8; j++) {
+                    System.out.print(data[i][j] + " | ");
+                }
+                System.out.println();
+                System.out.println("---------------------------------");
+            }
+            System.out.println("'X' is your knight");
         }
-        System.out.println("'X' is your knight");
     }
-}
