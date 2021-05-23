@@ -60,10 +60,11 @@ public class Chess {
             System.out.println("Please enter coordinates where you want knight to move");
             var userInputMove = new Scanner(System.in).nextInt();
             if (userInputMove >= 1 && userInputMove <= 64) {
-                if (userInputMove == knightCell + 6 || userInputMove == knightCell + 10 ||
+                if ((userInputMove == knightCell + 6 || userInputMove == knightCell + 10 ||
                         userInputMove == knightCell + 15 || userInputMove == knightCell + 17 ||
                         userInputMove == knightCell - 6 || userInputMove == knightCell - 10 ||
-                        userInputMove == knightCell - 15 || userInputMove == knightCell - 17) {
+                        userInputMove == knightCell - 15 || userInputMove == knightCell - 17)
+                        && checkForRowsAndCols(knightCell, userInputMove)) {
                     System.out.println("Move is possible");
                     return userInputMove;
                 } else {
@@ -74,28 +75,46 @@ public class Chess {
     }
 
 
-        static void makeUserProgress ( int number){
-            for (int rows = 0; rows < NUMBERS.length; rows++) {
-                for (int cols = 0; cols < NUMBERS.length; cols++) {
-                    if (number == NUMBERS[rows][cols]) {
-                        BOARD[rows][cols] = USER[0];
+    static void makeUserProgress(int number) {
+        for (int rows = 0; rows < NUMBERS.length; rows++) {
+            for (int cols = 0; cols < NUMBERS.length; cols++) {
+                if (number == NUMBERS[rows][cols]) {
+                    BOARD[rows][cols] = USER[0];
+                }
+            }
+        }
+        buildGameBoard();
+    }
+
+
+    static void buildGameBoard() {
+        System.out.println("---------------------------------");
+        for (int i = 0; i < 8; i++) {
+            System.out.print("| ");
+            for (int j = 0; j < 8; j++) {
+                System.out.print(BOARD[i][j] + " | ");
+            }
+            System.out.println();
+            System.out.println("---------------------------------");
+        }
+        System.out.println("'X' is your knight");
+    }
+
+    static boolean checkForRowsAndCols(int knightCell, int knightMove) {
+        for (int rows = 0; rows < NUMBERS.length; rows++) {
+            for (int cols = 0; cols < NUMBERS.length; cols++) {
+                if (knightCell == NUMBERS[rows][cols]) {
+                    for (int rows2 = 0; rows2 < NUMBERS.length; rows2++) {
+                        for (int cols2 = 0; cols2 < NUMBERS.length; cols2++) {
+                            if (knightMove == NUMBERS[rows2][cols2] && rows != rows2
+                                    && Math.abs(cols - cols2) < 4) {
+                                return true;
+                            }
+                        }
                     }
                 }
             }
-            buildGameBoard(Chess.BOARD);
         }
-
-
-        static void buildGameBoard (String[][]data){
-            System.out.println("---------------------------------");
-            for (int i = 0; i < 8; i++) {
-                System.out.print("| ");
-                for (int j = 0; j < 8; j++) {
-                    System.out.print(data[i][j] + " | ");
-                }
-                System.out.println();
-                System.out.println("---------------------------------");
-            }
-            System.out.println("'X' is your knight");
-        }
+        return false;
     }
+}
